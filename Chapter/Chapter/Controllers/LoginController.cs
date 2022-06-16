@@ -31,7 +31,7 @@ namespace Chapter.Controllers
                 return Unauthorized(new { msg = "Email e/ou senha invalidos" });
             }
 
-            var minhasClains = new[]
+            var minhasClaims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Email, usuarioEncontrado.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, usuarioEncontrado.Id.ToString()),
@@ -45,7 +45,7 @@ namespace Chapter.Controllers
             var meuToken = new JwtSecurityToken(
                 issuer : "chapter.webapi",
                 audience : "chapter.webapi",
-                claims : minhasClains,
+                claims : minhasClaims,
                 expires: DateTime.Now.AddMinutes(60),
                 signingCredentials: credenciais
                 );
